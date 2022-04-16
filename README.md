@@ -1,1 +1,1 @@
-## Learn OpenGl just for fun.
+## Learn OpenGL just for fun.
