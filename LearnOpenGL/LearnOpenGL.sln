@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LearnOpenGL", "LearnOpenGL\LearnOpenGL.vcxproj", "{63457712-3E76-4DF0-B37A-21750D66F751}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Transformations", "Transformations\Transformations.vcxproj", "{7CE8139A-400F-4D65-B622-3736F4504A81}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CameraMouseZoom", "CameraMouseZoom\CameraMouseZoom.vcxproj", "{71B3129B-BE64-4F9F-99D6-77CEDD9D66C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63457712-3E76-4DF0-B37A-21750D66F751}.Debug|x64.ActiveCfg = Debug|x64
+		{63457712-3E76-4DF0-B37A-21750D66F751}.Debug|x64.Build.0 = Debug|x64
+		{63457712-3E76-4DF0-B37A-21750D66F751}.Debug|x86.ActiveCfg = Debug|Win32
+		{63457712-3E76-4DF0-B37A-21750D66F751}.Debug|x86.Build.0 = Debug|Win32
+		{63457712-3E76-4DF0-B37A-21750D66F751}.Release|x64.ActiveCfg = Release|x64
+		{63457712-3E76-4DF0-B37A-21750D66F751}.Release|x64.Build.0 = Release|x64
+		{63457712-3E76-4DF0-B37A-21750D66F751}.Release|x86.ActiveCfg = Release|Win32
+		{63457712-3E76-4DF0-B37A-21750D66F751}.Release|x86.Build.0 = Release|Win32
+		{7CE8139A-400F-4D65-B622-3736F4504A81}.Debug|x64.ActiveCfg = Debug|x64
+		{7CE8139A-400F-4D65-B622-3736F4504A81}.Debug|x64.Build.0 = Debug|x64
+		{7CE8139A-400F-4D65-B622-3736F4504A81}.Debug|x86.ActiveCfg = Debug|Win32
+		{7CE8139A-400F-4D65-B622-3736F4504A81}.Debug|x86.Build.0 = Debug|Win32
+		{7CE8139A-400F-4D65-B622-3736F4504A81}.Release|x64.ActiveCfg = Release|x64
+		{7CE8139A-400F-4D65-B622-3736F4504A81}.Release|x64.Build.0 = Release|x64
+		{7CE8139A-400F-4D65-B622-3736F4504A81}.Release|x86.ActiveCfg = Release|Win32
+		{7CE8139A-400F-4D65-B622-3736F4504A81}.Release|x86.Build.0 = Release|Win32
+		{71B3129B-BE64-4F9F-99D6-77CEDD9D66C2}.Debug|x64.ActiveCfg = Debug|x64
+		{71B3129B-BE64-4F9F-99D6-77CEDD9D66C2}.Debug|x64.Build.0 = Debug|x64
+		{71B3129B-BE64-4F9F-99D6-77CEDD9D66C2}.Debug|x86.ActiveCfg = Debug|Win32
+		{71B3129B-BE64-4F9F-99D6-77CEDD9D66C2}.Debug|x86.Build.0 = Debug|Win32
+		{71B3129B-BE64-4F9F-99D6-77CEDD9D66C2}.Release|x64.ActiveCfg = Release|x64
+		{71B3129B-BE64-4F9F-99D6-77CEDD9D66C2}.Release|x64.Build.0 = Release|x64
+		{71B3129B-BE64-4F9F-99D6-77CEDD9D66C2}.Release|x86.ActiveCfg = Release|Win32
+		{71B3129B-BE64-4F9F-99D6-77CEDD9D66C2}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

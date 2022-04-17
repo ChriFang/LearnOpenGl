@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="triangle.cpp" />
+    <ClCompile Include="..\glad\glad.c">
+      <Filter>glad</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="glad">
+      <UniqueIdentifier>{d5aa5d73-971e-4f14-bdb3-c7d84dd61696}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\glad\glad.h">
+      <Filter>glad</Filter>
+    </ClInclude>
+    <ClInclude Include="..\glad\khrplatform.h">
+      <Filter>glad</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
