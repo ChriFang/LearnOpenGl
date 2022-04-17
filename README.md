@@ -1,1 +1,2 @@
-## Learn OpenGL just for fun.
+## OpenGL 真好玩！
+### https://learnopengl-cn.github.io/
