@@ -18,8 +18,8 @@ void check_timer(double time);
 const unsigned int SCR_WIDTH = 600;
 const unsigned int SCR_HEIGHT = 600;
 
-// create transformations
-glm::mat4 transform = glm::mat4(1.0f);
+float up_distance = 0.9f;
+float rotate_angle = 0.0f;
 
 
 int main()
@@ -64,17 +64,17 @@ int main()
 	// set up vertex data (and buffer(s)) and configure vertex attributes
 	// ------------------------------------------------------------------
 	float vertices[] = {
-		0.0f, 0.0f, 0.0f,  // 0
-		0.0f, 0.1f, 0.0f,  // 1
-		0.1f, 0.0f, 0.0f,  // 2
-		0.1f, 0.1f, 0.0f,  // 3
-		0.0f, 0.2f, 0.0f,  // 4
-		0.1f, 0.2f, 0.0f,  // 5
-		0.2f, 0.1f, 0.0f,  // 6
-		0.2f, 0.0f, 0.0f,  // 7
+		-0.1f, -0.1f, 0.0f,  // 0
+		-0.1f, 0.0f, 0.0f,  // 1
+		0.0f, -0.1f, 0.0f,  // 2
+		0.0f, 0.0f, 0.0f,  // 3
+		-0.1f, 0.1f, 0.0f,  // 4
+		0.0f, 0.1f, 0.0f,  // 5
+		0.1f, 0.0f, 0.0f,  // 6
+		0.1f, -0.1f, 0.0f,  // 7
 
-		0.3f, 0.0f, 0.0f,  // 8
-		0.3f, 0.1f, 0.0f,  // 9
+		0.2f, -0.1f, 0.0f,  // 8
+		0.2f, 0.0f, 0.0f,  // 9
 	};
 	unsigned int indices[] = {  // note that we start from 0!
 		0, 1, 2,  // first Triangle
@@ -113,8 +113,6 @@ int main()
 	// VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
 	glBindVertexArray(0);
 
-	transform = glm::rotate(transform, 0.0f, glm::vec3(0.0f, 0.0f, 1.0f));
-
 	// uncomment this call to draw in wireframe polygons.
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
@@ -131,6 +129,11 @@ int main()
 		// ------
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+
+		// create transformations
+		glm::mat4 transform = glm::mat4(1.0f);
+		transform = glm::translate(transform, glm::vec3(0.0f, up_distance, 0.0f));
+		transform = glm::rotate(transform, glm::radians(rotate_angle), glm::vec3(0.0f, 0.0f, 1.0f));
 
 		ourShader.use();
 		unsigned int transformLoc = glGetUniformLocation(ourShader.ID, "transform");
@@ -185,7 +188,14 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 		{
 		case GLFW_MOUSE_BUTTON_LEFT:
 		{
-			transform = glm::rotate(transform, glm::radians(-90.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+			if (rotate_angle == -270.0f)
+			{
+				rotate_angle = 0.0f;
+			}
+			else
+			{
+				rotate_angle -= 90.0f;
+			}
 		}
 		break;
 		default:
@@ -196,7 +206,11 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 
 void fall()
 {
-	transform = glm::translate(transform, glm::vec3(0.0f, -0.1f, 0.0f));
+	if (up_distance <= -0.9f)
+	{
+		return;
+	}
+	up_distance -= 0.1f;
 }
 
 void on_timer(int count)
