@@ -10,8 +10,8 @@
 //#pragma comment(linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"")
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-void processInput(GLFWwindow *window);
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
 void check_timer(double time);
 
 // 宽高暂时设置为相同，避免图形被拉伸
@@ -19,6 +19,7 @@ const unsigned int SCR_WIDTH = 600;
 const unsigned int SCR_HEIGHT = 600;
 
 float up_distance = 0.9f;
+float right_distance = 0.0f;
 float rotate_angle = 0.0f;
 
 
@@ -47,6 +48,7 @@ int main()
 	glfwMakeContextCurrent(window);
 	glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
+	glfwSetKeyCallback(window, key_callback);
 
 	// glad: load all OpenGL function pointers
 	// ---------------------------------------
@@ -120,9 +122,6 @@ int main()
 	// -----------
 	while (!glfwWindowShouldClose(window))
 	{
-		// input
-		// -----
-		processInput(window);
 		check_timer(glfwGetTime());
 
 		// render
@@ -132,7 +131,7 @@ int main()
 
 		// create transformations
 		glm::mat4 transform = glm::mat4(1.0f);
-		transform = glm::translate(transform, glm::vec3(0.0f, up_distance, 0.0f));
+		transform = glm::translate(transform, glm::vec3(right_distance, up_distance, 0.0f));
 		transform = glm::rotate(transform, glm::radians(rotate_angle), glm::vec3(0.0f, 0.0f, 1.0f));
 
 		ourShader.use();
@@ -161,14 +160,6 @@ int main()
 	// ------------------------------------------------------------------
 	glfwTerminate();
 	return 0;
-}
-
-// process all input: query GLFW whether relevant keys are pressed/released this frame and react accordingly
-// ---------------------------------------------------------------------------------------------------------
-void processInput(GLFWwindow *window)
-{
-	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-		glfwSetWindowShouldClose(window, true);
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
@@ -201,6 +192,59 @@ void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 		default:
 			break;
 		}
+	}
+}
+
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+	switch (key)
+	{
+	case GLFW_KEY_ESCAPE:
+		if (action == GLFW_PRESS)
+		{
+			glfwSetWindowShouldClose(window, true);
+		}
+		break;
+	case GLFW_KEY_LEFT:
+		if (action == GLFW_PRESS)
+		{
+			right_distance -= 0.1f;
+			if (right_distance <= -0.9f)
+			{
+				right_distance = -0.9f;
+			}
+		}
+		break;
+	case GLFW_KEY_RIGHT:
+		if (action == GLFW_PRESS)
+		{
+			right_distance += 0.1f;
+			if (right_distance >= 0.8f)
+			{
+				right_distance = 0.8f;
+			}
+		}
+		break;
+	case GLFW_KEY_DOWN:
+		{
+			static int count = 0;
+			if (action == GLFW_PRESS)
+			{
+			}
+			else if (action == GLFW_REPEAT)
+			{
+				// 检测长按
+				if (++count >= 5)
+				{
+					up_distance = -0.9f;
+				}
+			}
+			else if (action == GLFW_RELEASE)
+			{
+				count = 0;
+			}
+		}
+		break;
 	}
 }
 

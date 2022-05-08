@@ -119,6 +119,7 @@
     <ClCompile Include="Tetris.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\common\shader\shader_s.h" />
     <ClInclude Include="..\glad\glad.h" />
     <ClInclude Include="..\glad\khrplatform.h" />
   </ItemGroup>
